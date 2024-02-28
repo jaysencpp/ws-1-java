@@ -16,6 +16,7 @@ public class GreetingController {
 
 	@CrossOrigin(origins = "http://localhost:9000")
 	@GetMapping("/greeting")
+	//TODO: Go to definition of Greeting
 	public Greeting greeting(@RequestParam(required = false, defaultValue = "World") String name) {
 		System.out.println("==== get greeting ====");
 		return new Greeting(counter.incrementAndGet(), String.format(template, name));
@@ -24,6 +25,7 @@ public class GreetingController {
 	@GetMapping("/greeting-javaconfig")
 	public Greeting greetingWithJavaconfig(@RequestParam(required = false, defaultValue = "World") String name) {
 		System.out.println("==== in greeting ====");
+		JavaTmp tmp = new JavaTmp();
 		return new Greeting(counter.incrementAndGet(), String.format(template, name));
 	}
 

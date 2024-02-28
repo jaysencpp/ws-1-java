@@ -20,24 +20,28 @@ public class GreetingIntegrationTests {
 	@Autowired
 	private TestRestTemplate restTemplate;
 
+	//TODO: Rename entty to be entity
 	@Test
 	public void corsWithAnnotation() throws Exception {
-		ResponseEntity<Greeting> entity = this.restTemplate.exchange(
+		ResponseEntity<Greeting> entty = this.restTemplate.exchange(
 				RequestEntity.get(uri("/greeting")).header(HttpHeaders.ORIGIN, "http://localhost:9000").build(),
 				Greeting.class);
-		assertEquals(HttpStatus.OK, entity.getStatusCode());
-		assertEquals("http://localhost:9000", entity.getHeaders().getAccessControlAllowOrigin());
-		Greeting greeting = entity.getBody();
+		//TODO: Comment out the next two lines
+		assertEquals(HttpStatus.OK, entty.getStatusCode());
+		assertEquals("http://localhost:9000", entty.getHeaders().getAccessControlAllowOrigin());
+		Greeting greeting = entty.getBody();
 		assertEquals("Hello, World!", greeting.getContent());
 	}
 
+	//TODO: Run this one test
 	@Test
 	public void corsWithJavaconfig() {
-		ResponseEntity<Greeting> entity = this.restTemplate.exchange(RequestEntity.get(uri("/greeting-javaconfig"))
+		ResponseEntity<Greeting> entty= this.restTemplate.exchange(RequestEntity.get(uri("/greeting-javaconfig"))
 				.header(HttpHeaders.ORIGIN, "http://localhost:9000").build(), Greeting.class);
-		assertEquals(HttpStatus.OK, entity.getStatusCode());
-		assertEquals("http://localhost:9000", entity.getHeaders().getAccessControlAllowOrigin());
-		Greeting greeting = entity.getBody();
+		assertEquals(HttpStatus.OK, entty.getStatusCode());
+		//TODO: Set a breakpoint on next line
+		assertEquals("http://localhost:9000", entty.getHeaders().getAccessControlAllowOrigin());
+		Greeting greeting = entty.getBody();
 		assertEquals("Hello, World!", greeting.getContent());
 	}
 

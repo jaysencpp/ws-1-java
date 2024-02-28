@@ -6,6 +6,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+//TODO: Go to GreetingsController
+//TODO: Find where "greeting-id" is located
+//TODO: Run the project
 @SpringBootApplication
 public class RestServiceCorsApplication {
 
